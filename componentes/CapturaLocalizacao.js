@@ -8,9 +8,9 @@ import {
   Alert,
 } from 'react-native';
 import * as Location from 'expo-location';
-import * as Permissions from 'expo-permissions';
 
 import Cores from '../constantes/Cores';
+import PreviewDoMapa from './PreviewDoMapa';
 
 const CapturaLocalizacao = (props) => {
   const [estaCapturando, setEstaCapturando] = useState(false);
@@ -58,13 +58,16 @@ const CapturaLocalizacao = (props) => {
 
   return (
     <View style={styles.capturaLocalizacao}>
-      <View style={styles.previewDoMapa}>
+      <PreviewDoMapa
+        style={styles.previewDoMapa}
+        localizacao={localizacaoSelecionada}
+      >
         {estaCapturando ? (
           <ActivityIndicator size='large' color={Cores.primary} />
         ) : (
           <Text>Nenhuma localização disponível</Text>
         )}
-      </View>
+      </PreviewDoMapa>
       <Button
         title='Obter localização'
         color={Cores.primary}
